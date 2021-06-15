@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper file: 실행 할 쿼리 문을 저장하는 파일. 테이블 하나당 한개씩 작성
+namespace: 작업하는 테이블들을 구분해주기 위한 식별자 -->
+<mapper namespace="com.mvc.boot.dao.HouseInfoDao">
+
+  <select id="selectAll" parameterType="String" resultType="HouseInfo">
+    select * from houseinfo where dong = #{dong}
+  </select>
+  <select id="selectAllByAptname" parameterType="String" resultType="HouseInfo">
+    select * from houseinfo where AptName like CONCAT('%',#{aptname},'%')
+  </select>
+  <select id="selectOne" resultType="HouseInfo">
+    select * from houseinfo where no = #{no}
+  </select>
+
+</mapper>

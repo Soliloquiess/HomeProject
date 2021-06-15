@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mvc.boot.dao.BoardDao">
+
+	<select id="selectAllNews" resultType="NewsBoard">
+		SELECT *
+		FROM newsboard
+	</select>
+	<select id="selectOneNews" resultType="NewsBoard" parameterType="String">
+		SELECT num, title, content 
+		FROM newsboard
+		WHERE num = #{num}
+	</select>
+	<select id="selectAllNotice" resultType="NoticeBoard">
+		SELECT *
+		FROM noticeboard
+	</select>
+	<select id="selectOneNotice" resultType="NoticeBoard" parameterType="String">
+		SELECT num, title, content 
+		FROM noticeboard
+		WHERE num = #{num}
+	</select>
+	<select id="selectAll" resultType="QnaBoard">
+		SELECT *
+		FROM qnaboard
+	</select>
+	<select id="selectOne" resultType="QnaBoard" parameterType="String">
+		SELECT num, name, title, content 
+		FROM qnaboard
+		WHERE num = #{num}
+	</select>
+	<insert id="addQna" parameterType="QnaBoard">
+		INSERT INTO qnaboard (name, title, content)
+		values(#{name}, #{title}, #{content});
+	</insert>
+	<update id="qnaUpdate" parameterType="QnaBoard">
+		update qnaboard
+		set title = #{title}, content = #{content}
+		where num = #{num}
+	</update>
+	
+	<delete id="qnaDelete" parameterType="String">
+		delete from qnaboard
+		where num = #{num}
+	</delete>
+</mapper>
